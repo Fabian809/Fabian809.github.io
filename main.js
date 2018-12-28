@@ -30,7 +30,7 @@ function handleClientLoad(){
 function initclient(){
     gapi.client.init({
     discoveryDocs: DISCOVERY_DOCS,
-    clientID: CLIENT_ID,
+    clientId: CLIENT_ID,
     scope: SCOPES
     }).then(() => {
         //Listen for sign in state changes
@@ -75,7 +75,7 @@ function showChannelData() {
     channelData.innerHTML = data;
 }
 
-// get channel from API
+// Get channel from API
 function getChannel(channel){
     gapi.client.youtube.channels.list({
         part: 'snippet,contentDetails,statistics',
@@ -95,8 +95,7 @@ function getChannel(channel){
             </ul>
             <p>${channel.snippet.description}</p>
             <hr>
-            <a class="btn grey -darken-2" target="_blank" href="https://youtube.com/${
-                channel.snippet.customUrl}"Visit Channel</a>
+            <a class="btn grey -darken-2" target="_blank" href="https://youtube.com/${channel.snippet.customUrl}"Visit Channel</a>
           `;
           showChannelData(output);
 
@@ -106,4 +105,36 @@ function getChannel(channel){
       .catch(err => alert('no Channel by that Name'));
 }
 
-function requestVideoPlaylist
+function requestVideoPlaylist(playlistId){
+    const requestOptions = {
+        playlistId: playlistId,
+        part: 'snippet',
+        maxResult: 10
+    };
+
+    const request = gapi.client.youtube.playlistItems.list(requestOptions);
+
+    request.execute(response => {
+        console.log(response);
+        const playlistItems = response.result.items;
+        if(playlistItems){
+            let output = '<br><h4 class="center-align">Lastes Videos</h4>';
+
+            //loop through videos and append ouput
+            playlistItems.forEach(item => {
+                const videiId = item.snippet.resorceId.videoId;
+
+                ouput += `
+                  <div class="col s3">
+                  <iframe width="100" height="auto" src="https://www.youtube.com/embed/${videiId}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </div>
+                `;
+            }); 
+
+            // output videos
+            videoContainer.innerHTML = output;
+        }   else{
+            videoContainer.innerHTML ='No Uploaded Videos';
+        }
+    });
+}
