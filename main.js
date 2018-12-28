@@ -27,7 +27,7 @@ function handleClientLoad(){
 }
 
 // Init API client library and set up sign in Listeners
-function initClient(){
+function initclient(){
     gapi.client.init({
     discoveryDocs: DISCOVERY_DOCS,
     clientId: CLIENT_ID,
