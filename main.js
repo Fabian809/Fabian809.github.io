@@ -8,7 +8,7 @@ const signoutButton = document.getElementById('signout-button');
 const content = document.getElementById('content');
 const channelForm = document.getElementById('channel-form');
 const channelInput = document.getElementById('channel-input');
-const cvideoContainer = document.getElementById('video-container');
+const videoContainer = document.getElementById('video-container');
 
 const defaultChannel='techguyweb';
 
