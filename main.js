@@ -70,7 +70,7 @@ function handleSignoutClick() {
 }
 
 // Display channel data
-function showChannelData() {
+function showChannelData(data) {
     const channelData = document.getElementById('channel-data');
     channelData.innerHTML = data;
 }
