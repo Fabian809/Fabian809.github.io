@@ -43,6 +43,7 @@ function initClient(){
 }
 
 // update UI sign In state changes
+function updateSigninStatus(isSignedIn){};
 
 
 // Handle login
