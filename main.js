@@ -27,7 +27,7 @@ function handleClientLoad(){
 }
 
 // Init API client library and set up sign in Listeners
-function initclient(){
+function initClient(){
     gapi.client.init({
     discoveryDocs: DISCOVERY_DOCS,
     clientId: CLIENT_ID,
@@ -67,7 +67,7 @@ function handleAuthClick() {
 // Handle logout
 function handleSignoutClick() {
     gapi.auth2.getAuthInstance().signOut();
-}
+}       
 
 // Display channel data
 function showChannelData(data) {
@@ -126,7 +126,7 @@ function requestVideoPlaylist(playlistId){
 
                 ouput += `
                   <div class="col s3">
-                  <iframe width="100" height="auto" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  <iframe width="100%" height="auto" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                   </div>
                 `;
             }); 
