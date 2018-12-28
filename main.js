@@ -122,11 +122,11 @@ function requestVideoPlaylist(playlistId){
 
             //loop through videos and append ouput
             playlistItems.forEach(item => {
-                const videiId = item.snippet.resorceId.videoId;
+                const videoId = item.snippet.resorceId.videoId;
 
                 ouput += `
                   <div class="col s3">
-                  <iframe width="100" height="auto" src="https://www.youtube.com/embed/${videiId}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  <iframe width="100" height="auto" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                   </div>
                 `;
             }); 
